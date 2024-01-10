@@ -3,6 +3,11 @@ import Button from "./Button";
 function MobileNav() {
   const [show, setShow] = useState(false);
   const handleShow = () => {
+    if (show) {
+      document.body.classList.remove("modal-open");
+    } else {
+      document.body.classList.add("modal-open");
+    }
     setShow((pre) => !pre);
   };
   return (
@@ -23,21 +28,27 @@ function MobileNav() {
         />
       </svg>
       {show && (
-        <div className="fixed z-20 hidden tablet:block right-5 top-20 left-4 bg-pm-dark-violet text-white p-6 rounded-md overflow-hidden">
-          <nav>
-            <ul className="flex flex-col items-center gap-4">
-              <li>Features</li>
-              <li>Pricing</li>
-              <li>Resources</li>
-            </ul>
-          </nav>
-          <hr className="opacity-25 mt-6" />
+        <div className="fixed z-10 top-0 left-0 right-0 bottom-0">
+          <div
+            onClick={handleShow}
+            className="absolute top-0 right-0 bottom-0 left-0 z-20"
+          ></div>
+          <div className="absolute z-30 hidden tablet:block right-5 top-20 left-4 bg-pm-dark-violet text-white p-6 rounded-md overflow-hidden">
+            <nav>
+              <ul className="flex flex-col items-center gap-4">
+                <li className="hover:text-pm-cyan cursor-pointer">Features</li>
+                <li className="hover:text-pm-cyan cursor-pointer">Pricing</li>
+                <li className="hover:text-pm-cyan cursor-pointer">Resources</li>
+              </ul>
+            </nav>
+            <hr className="opacity-25 mt-6" />
 
-          <div className="flex flex-col py-6 gap-4">
-            <Button>Login</Button>
-            <Button type="primary" rounded>
-              Sign Up
-            </Button>
+            <div className="flex flex-col py-6 gap-4">
+              <Button>Login</Button>
+              <Button type="primary" rounded>
+                Sign Up
+              </Button>
+            </div>
           </div>
         </div>
       )}

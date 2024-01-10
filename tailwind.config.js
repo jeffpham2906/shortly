@@ -6,7 +6,7 @@ export default {
     extend: {
       screens: {
         'desk': { 'max': '1440px' },
-        'tablet': { 'max': '765px' },
+        'tablet': { 'max': '975px' },
         'mobile': { 'max': '375px' }
       },
       colors: {

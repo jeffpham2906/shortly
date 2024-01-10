@@ -33,11 +33,14 @@ function Shorten() {
                   } py-3 px-6 flex-1 rounded-md placeholder:text-sm tablet:mb-4 `}
                   placeholder="Shorten a link here..."
                   value={input}
-                  onChange={(e) => setInput(e.target.value)}
+                  onChange={(e) => {
+                    if (input !== "") setError(false);
+                    setInput(e.target.value);
+                  }}
                   ref={inputRef}
                 />
                 {error && (
-                  <div className="absolute text-sc-red -bottom-7 text-sm left-0 italic">
+                  <div className="absolute text-sc-red -bottom-7 text-sm left-0 italic tablet:bottom-14">
                     Please add a link
                   </div>
                 )}
