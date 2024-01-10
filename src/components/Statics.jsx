@@ -21,7 +21,7 @@ function Statics() {
           <div className="bg-white p-6 z-10 relative rounded-md tablet:text-center">
             <div className="absolute bg-pm-dark-violet p-4 rounded-full top-0 -translate-y-1/2 tablet:left-1/2 tablet:-translate-x-1/2">
               <img
-                src="public\images\icon-brand-recognition.svg"
+                src="./images/icon-brand-recognition.svg"
                 alt=""
                 className="h-6 w-6"
               />
@@ -36,7 +36,7 @@ function Statics() {
           <div className="bg-white p-6 z-10 relative translate-y-8 rounded-md tablet:text-center">
             <div className="absolute bg-pm-dark-violet p-4 rounded-full top-0 -translate-y-1/2 tablet:left-1/2 tablet:-translate-x-1/2">
               <img
-                src="public\images\icon-detailed-records.svg"
+                src="./images/icon-detailed-records.svg"
                 alt=""
                 className="h-6 w-6"
               />
@@ -51,7 +51,7 @@ function Statics() {
           <div className="bg-white p-6 z-10 relative  translate-y-16 rounded-md tablet:text-center">
             <div className="absolute bg-pm-dark-violet p-4 rounded-full top-0 -translate-y-1/2 tablet:left-1/2 tablet:-translate-x-1/2">
               <img
-                src="public\images\icon-fully-customizable.svg"
+                src="./images/icon-fully-customizable.svg"
                 alt=""
                 className="h-6 w-6"
               />
