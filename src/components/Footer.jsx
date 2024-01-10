@@ -19,7 +19,9 @@ const ListDetailedInformation = informations.map((ele, index) => {
       <h3 className="mb-3">{ele.title}</h3>
       <ul className="text-sm text-nt-gray font-medium flex flex-col gap-1">
         {ele.subs.map((e, i) => (
-          <li key={i}>{e}</li>
+          <li key={i} className="hover:text-pm-cyan cursor-pointer">
+            {e}
+          </li>
         ))}
       </ul>
     </div>
@@ -38,16 +40,32 @@ function Footer() {
         </div>
         <ul className="flex gap-4 w-fit">
           <li>
-            <img src="./images/icon-facebook.svg" alt="icon facebook" />
+            <img
+              src="./images/icon-facebook.svg"
+              alt="icon facebook"
+              className="cursor-pointer hover:opacity-50"
+            />
           </li>
           <li>
-            <img src="./images/icon-twitter.svg" alt="icon twitter" />
+            <img
+              src="./images/icon-twitter.svg"
+              alt="icon twitter"
+              className="cursor-pointer hover:opacity-50"
+            />
           </li>
           <li>
-            <img src="./images/icon-pinterest.svg" alt="icon pinterest" />
+            <img
+              src="./images/icon-pinterest.svg"
+              alt="icon pinterest"
+              className="cursor-pointer hover:opacity-50"
+            />
           </li>
           <li>
-            <img src="./images/icon-instagram.svg" alt="icon instagram" />
+            <img
+              src="./images/icon-instagram.svg"
+              alt="icon instagram"
+              className="cursor-pointer hover:opacity-50"
+            />
           </li>
         </ul>
       </div>

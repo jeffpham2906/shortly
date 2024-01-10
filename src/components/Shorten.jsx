@@ -1,32 +1,19 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Button from "./Button";
 import AppLayout from "./AppLayout";
+import Result from "./Result";
 function Shorten() {
   const [input, setInput] = useState("");
-  const [arrResult, setArrResult] = useState([]);
+  const [error, setError] = useState(false);
 
+  const inputRef = useRef();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(JSON.stringify({ url: input }));
-    console.log(import.meta.env.VITE_API_KEY);
-    try {
-      const res = await fetch("http://www.shrtlnk.dev/api/v2/link", {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "api-key": "O90t6UEYCWhTfvJz89b5SXl9GyyNz914snNyCPLQOn6x8",
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: `Bearer ${"O90t6UEYCWhTfvJz89b5SXl9GyyNz914snNyCPLQOn6x8"}`,
-        },
-
-        body: JSON.stringify({ url: input }),
-      });
-
-      console.log(await res.json());
-    } catch (error) {
-      console.error(error.message);
-    }
+    console.log(input);
+    if (input === "") {
+      setError(true);
+      inputRef.current.focus();
+    } else setError(false);
   };
   return (
     <>
@@ -34,16 +21,26 @@ function Shorten() {
         <AppLayout>
           <section className="bg-shorten-desk bg-pm-dark-violet rounded-md">
             <form onSubmit={handleSubmit} className="px-12 py-10 tablet:p-4">
-              <div className="flex gap-4 tablet:flex-col">
+              <div className="flex gap-4 tablet:flex-col relative">
                 <input
                   type="text"
                   name="shorten"
                   id="shorten"
-                  className="py-3 px-6 flex-1 rounded-md placeholder:text-sm tablet:mb-4"
+                  className={`${
+                    error
+                      ? "outline-sc-red outline-2 outline placeholder:text-sc-red placeholder:opacity-50"
+                      : ""
+                  } py-3 px-6 flex-1 rounded-md placeholder:text-sm tablet:mb-4 `}
                   placeholder="Shorten a link here..."
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
+                  ref={inputRef}
                 />
+                {error && (
+                  <div className="absolute text-sc-red -bottom-7 text-sm left-0 italic">
+                    Please add a link
+                  </div>
+                )}
                 <Button type="primary" size="large">
                   <span className="text-base font-semibold">Shorten It!</span>
                 </Button>
@@ -54,16 +51,14 @@ function Shorten() {
       </div>
       <div className="pt-20 mb-16 tablet:pt-32">
         <AppLayout>
-          <div className="flex justify-between bg-white rounded-md items-center px-4 py-2 tablet:flex-col mobile:text-sm tablet:items-start">
-            <div>https://www.frontendmentor.io</div>
-            <div className="w-full h-px bg-pm-dark-violet opacity-50 my-2 hidden tablet:block"></div>
-            <div className="flex items-center gap-4 tablet:flex-col tablet:items-start mobile:gap-1 tablet:w-full">
-              <p className="text-pm-cyan">https://rel.link/324dczcdsa</p>
-              <Button type="primary" width="w-full">
-                Coppy
-              </Button>
-            </div>
-          </div>
+          <Result
+            originUrl="https://www.frontendmentor.io"
+            newUrl="https://rel.link/324dczcdsa"
+          />
+          <Result
+            originUrl="https://twitter.com/frontendmentor"
+            newUrl="https://rel.ink/goasokd"
+          />
         </AppLayout>
       </div>
     </>
